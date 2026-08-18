@@ -1,6 +1,6 @@
 import { analyzeProblem } from "./services/gemini.js";
 
-const query = "El microscopio no enciende.";
+const query = "Los nucleos se ven oscuros";
 
 const result = await analyzeProblem(query);
 
