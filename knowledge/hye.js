@@ -31,10 +31,12 @@ export const hyeKnowledge = [
       "Comparar el resultado con un control conocido",
       "Verificar otros factores del procesamiento cuando corresponda",
     ],
-    source: [
+    sources: [
       "College of American Pathologists (CAP) - H&E Troubleshooting Guide.",
       "Northwest University - The Science and Application of Hematoxylin and Eosin Staining.",
     ],
+    notes:
+      "Esta información constituye orientación técnica y no sustituye los protocolos validados del laboratorio.",
   },
   {
     id: "HYE-003",
@@ -53,7 +55,7 @@ export const hyeKnowledge = [
     ],
     verification_steps: [
       "Fecha del último cambio del colorante.",
-      "ECambios en el lote y la marca del colorante.",
+      "Cambios en el lote y la marca del colorante.",
       "Tiempo de tinción.",
       "Tiempo de diferenciación.",
       "Grosor del corte",
@@ -66,9 +68,11 @@ export const hyeKnowledge = [
       "Comparar el resultado con un control conocido",
       "Verificar otros factores del procesamiento cuando corresponda",
     ],
-    source: [
+    sources: [
       "College of American Pathologists (CAP) - H&E Troubleshooting Guide.",
       "Northwest University - The Science and Application of Hematoxylin and Eosin Staining.",
     ],
+    notes:
+      "Esta información constituye orientación técnica y no sustituye los protocolos validados del laboratorio.",
   },
 ];
