@@ -67,5 +67,9 @@ export async function analyzeProblem(query) {
 
   const problem = hyeKnowledge.find((item) => item.id === result.problemId);
 
-  return problem ?? null;
+  if (!problem) {
+    return null;
+  }
+
+  return problem;
 }
