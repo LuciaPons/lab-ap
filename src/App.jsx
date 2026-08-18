@@ -8,10 +8,18 @@ function App() {
   const [query, setQuery] = useState("");
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState(null);
+  const [error, setError] = useState(null);
 
-  function handleSubmit() {
-    setLoading(true);
+  function handleSubmit(query) {
     setResult(null);
+    setError(null);
+
+    if (!query.trim()) {
+      setError("Describí el problema antes de analizarlo.");
+      return;
+    }
+
+    setLoading(true);
 
     setTimeout(() => {
       setResult("Análisis de prueba completado.");
@@ -36,7 +44,7 @@ function App() {
           loading={loading}
           onSubmit={handleSubmit}
         />
-        <ResultPanel result={result} loading={loading} />
+        <ResultPanel result={result} loading={loading} error={error} />
         <Disclaimer />
       </main>
     </div>

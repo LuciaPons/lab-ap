@@ -1,7 +1,7 @@
 export default function ProblemForm({ query, setQuery, loading, onSubmit }) {
   function handleSubmit(event) {
     event.preventDefault();
-    onSubmit();
+    onSubmit(query);
   }
 
   return (
