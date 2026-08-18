@@ -10,7 +10,7 @@ function App() {
   const [result, setResult] = useState(null);
   const [error, setError] = useState(null);
 
-  function handleSubmit(query) {
+  async function handleSubmit(query) {
     setResult(null);
     setError(null);
 
@@ -21,10 +21,32 @@ function App() {
 
     setLoading(true);
 
-    setTimeout(() => {
-      setResult("Análisis de prueba completado.");
+    try {
+      const response = await fetch("api/analyze", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          query,
+        }),
+      });
+
+      const data = await response.json();
+
+      console.log("Respuesta del servidor:", data);
+
+      if (data.found) {
+        setResult(data.problem);
+      } else {
+        setError(data.message);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      setError("No fue posible comunicarse con el servidor.");
+    } finally {
       setLoading(false);
-    }, 1500);
+    }
   }
 
   return (

@@ -16,14 +16,16 @@ app.get("/api/health", (req, res) => {
 app.post("/api/analyze", async (req, res) => {
   const { query } = req.body;
 
-  if (!query) {
+  console.log("Query recibida:", query);
+
+  if (!query?.trim()) {
     return res.status(400).json({
       error: "La consulta es obligatoria.",
     });
   }
 
   try {
-    const problem = await analyzeProblem(query);
+    const problem = await analyzeProblem(query.trim());
 
     if (!problem) {
       return res.json({
