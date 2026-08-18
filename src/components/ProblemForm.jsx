@@ -1,6 +1,11 @@
-export default function ProblemForm({ query, setQuery }) {
+export default function ProblemForm({ query, setQuery, loading, onSubmit }) {
+  function handleSubmit(event) {
+    event.preventDefault();
+    onSubmit();
+  }
+
   return (
-    <form className="flex flex-col gap-4">
+    <form onSubmit={handleSubmit} className="flex flex-col gap-4">
       <label htmlFor="problem" className="text-base font-medium text-zinc-900">
         ¿Qué problema observás?
       </label>
@@ -17,9 +22,10 @@ export default function ProblemForm({ query, setQuery }) {
 
       <button
         type="submit"
+        disabled={loading}
         className="w-full rounded-lg bg-zinc-900 px-4 py-3 text-base font-medium text-white transition-colors hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-zinc-400 focus:ring-offset-2"
       >
-        Analizar problema
+        {loading ? "Analizando..." : "Analizar problema"}
       </button>
     </form>
   );

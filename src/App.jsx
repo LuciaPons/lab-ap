@@ -6,6 +6,18 @@ import ResultPanel from "./components/ResultPanel";
 
 function App() {
   const [query, setQuery] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [result, setResult] = useState(null);
+
+  function handleSubmit() {
+    setLoading(true);
+    setResult(null);
+
+    setTimeout(() => {
+      setResult("Análisis de prueba completado.");
+      setLoading(false);
+    }, 1500);
+  }
 
   return (
     <div className="min-h-screen bg-zinc-100">
@@ -18,8 +30,13 @@ function App() {
       gap-8
       w-full max-w-2xl"
       >
-        <ProblemForm query={query} setQuery={setQuery} />
-        <ResultPanel />
+        <ProblemForm
+          query={query}
+          setQuery={setQuery}
+          loading={loading}
+          onSubmit={handleSubmit}
+        />
+        <ResultPanel result={result} loading={loading} />
         <Disclaimer />
       </main>
     </div>
