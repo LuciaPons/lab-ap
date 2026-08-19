@@ -50,7 +50,7 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-zinc-100">
+    <div className="min-h-screen">
       <Header />
 
       <main

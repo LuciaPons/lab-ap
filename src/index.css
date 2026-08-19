@@ -1,1 +1,25 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&display=swap");
+
 @import "tailwindcss";
+
+:root {
+  --color-background-app: linear-gradient(90deg, #4b3f7277 0%, #d66b7977 100%);
+  --color-surface: #f7f8f7;
+  --color-primary: #3e3565;
+  --color-secondary: #d66b7a;
+  --color-text-accent: #19181c;
+  --color-text-muted: #56545b;
+  --color-border: #d4d4d8;
+  --color-error: #ae382d;
+  --color-warning: ;
+
+  --font-title: "Manrope", sans-serif;
+  --font-text: "IBM Plex Sans", sans-serif;
+}
+
+body {
+  margin: 0;
+  background: var(--color-background-app);
+  font-family: var(--font-sans);
+}
