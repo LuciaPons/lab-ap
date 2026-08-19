@@ -27,7 +27,7 @@ export async function analyzeProblem(query) {
 
         5. Tu única tarea es identificar el problema correspondiente.
 
-        6. Si la consulta no puede relacionarse de forma suficiente con ningún problema de la base, devolvé "UNKNOWN".
+        6. Si la consulta no puede relacionarse de forma suficiente con ningún problema de la base, devolvé "unknown".
 
         7. No sustituyas los protocolos ni procedimientos validados del laboratorio.
     `;

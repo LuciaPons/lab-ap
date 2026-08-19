@@ -19,7 +19,7 @@ export default function Loader() {
       <div
         className="
       flex flex-col
-      justtify-start"
+      justify-start"
       >
         <p
           className="
