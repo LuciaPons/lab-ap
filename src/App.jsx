@@ -36,6 +36,10 @@ function App() {
 
       console.log("Respuesta del servidor:", data);
 
+      if (!response.ok) {
+        throw new Error(data.error || "No fue posible analizar la consulta.");
+      }
+
       if (data.found) {
         setResult(data.problem);
       } else {

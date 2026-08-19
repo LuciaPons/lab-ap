@@ -1,3 +1,4 @@
+import Loader from "./Loader";
 import ResultList from "./ResultList";
 
 export default function ResultPanel({ result, loading, error }) {
@@ -27,9 +28,7 @@ export default function ResultPanel({ result, loading, error }) {
             {error}
           </p>
         ) : loading ? (
-          <p className="text-sm font-(family-name:--font-text) leading-6 text-(--color-text-muted)">
-            Analizando el problema...
-          </p>
+          <Loader />
         ) : result ? (
           <div>
             <h3
