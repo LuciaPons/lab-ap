@@ -2,7 +2,13 @@ import Icon from "../assets/icons/flask-icon.svg";
 
 export default function Header() {
   return (
-    <header className="p-2 w-full max-w-2xl flex flex-col justify-center items-center">
+    <header
+      className="
+      mx-auto px-4 py-8 
+      flex flex-col
+      gap-8
+      w-full max-w-2xl"
+    >
       <div
         className="
         bg-(--color-surface)
@@ -19,8 +25,7 @@ export default function Header() {
         <div
           className="
         flex flex-col 
-        justify-start md:justify-center 
-        md:items-center mx-2"
+        justify-start mx-2"
         >
           <h1
             className="
