@@ -8,27 +8,29 @@ function App() {
   const [query, setQuery] = useState("");
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState(null);
+  const [formError, setFormError] = useState(null);
   const [error, setError] = useState(null);
 
-  async function handleSubmit(query) {
+  async function handleSubmit(value) {
     setResult(null);
+    setFormError(null);
     setError(null);
 
-    if (!query.trim()) {
-      setError("Describí el problema antes de analizarlo.");
+    if (!value.trim()) {
+      setFormError("Describí el problema antes de analizarlo.");
       return;
     }
 
     setLoading(true);
 
     try {
-      const response = await fetch("api/analyze", {
+      const response = await fetch("/api/analyze", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          query,
+          query: value,
         }),
       });
 
@@ -37,7 +39,7 @@ function App() {
       console.log("Respuesta del servidor:", data);
 
       if (!response.ok) {
-        throw new Error(data.error || "No fue posible analizar la consulta.");
+        throw new Error(data.error || "no fue posible analizar la consulta.");
       }
 
       if (data.found) {
@@ -47,7 +49,10 @@ function App() {
       }
     } catch (error) {
       console.error("Error:", error);
-      setError("No fue posible comunicarse con el servidor.");
+      setError(
+        error.message ||
+          "No fue posible comunicarse con el servidor. Inténtalo nuevamente.",
+      );
     } finally {
       setLoading(false);
     }
@@ -68,6 +73,7 @@ function App() {
           query={query}
           setQuery={setQuery}
           loading={loading}
+          formError={formError}
           onSubmit={handleSubmit}
         />
         <ResultPanel result={result} loading={loading} error={error} />

@@ -1,4 +1,10 @@
-export default function ProblemForm({ query, setQuery, loading, onSubmit }) {
+export default function ProblemForm({
+  query,
+  setQuery,
+  loading,
+  formError,
+  onSubmit,
+}) {
   function handleSubmit(event) {
     event.preventDefault();
     onSubmit(query);
@@ -27,7 +33,9 @@ export default function ProblemForm({ query, setQuery, loading, onSubmit }) {
         name="problem"
         value={query}
         onChange={(event) => setQuery(event.target.value)}
-        rows="6"
+        aria-invalid={formError ? "true" : "false"}
+        aria-describedby={formError ? "problem-error" : undefined}
+        rows={6}
         placeholder="Ej: los núcleos se observan demasiado intensos y oscuros."
         className="
         min-h-40 w-full 
@@ -40,9 +48,20 @@ export default function ProblemForm({ query, setQuery, loading, onSubmit }) {
         text-(--color-text-accent)
         shadow-sm 
         outline-none 
-        placeholder:text-(--color-text-muted)/60 focus:border-zinc-500 focus:ring-2 focus:ring-zinc-200
+        placeholder:text-(--color-text-muted)/60 focus:border-(--color-text-muted) 
+        focus:ring-2 
+        focus:ring-(--color-border)
         font-(family-name:--font-text)"
       />
+      {formError && (
+        <p
+          id="problem-error"
+          className="text-sm text-(--color-error)"
+          role="alert"
+        >
+          {formError}
+        </p>
+      )}
 
       <button
         type="submit"

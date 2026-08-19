@@ -42,6 +42,13 @@ app.post("/api/analyze", async (req, res) => {
   } catch (error) {
     console.error("Error analyzing problem:", error);
 
+    if (error.status === 429) {
+      return res.status(429).json({
+        error:
+          "El servicio de análisis alcanzó temporalmente su límite de uso. Intentá nuevamente más tarde.",
+      });
+    }
+
     return res.status(500).json({
       error: "No fue posible analizar la consulta.",
     });
