@@ -44,7 +44,7 @@ export default function ProblemForm({
         border border-(--color-border) 
         bg-(--color-surface)
         px-4 py-3 
-        text-sm
+        text-base
         text-(--color-text-accent)
         shadow-sm 
         outline-none 
